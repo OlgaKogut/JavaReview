@@ -1,8 +1,8 @@
 package interfaces.school;
 
-import static interfaces.school.Data.*;
+import static interfaces.school.ISalary.*;
 
-public class Teacher extends BaseEmployee{
+public class Teacher extends BasePerson implements ISalary {
 
     private String subject;
     private int set;
@@ -25,11 +25,13 @@ public class Teacher extends BaseEmployee{
         );
     }
 
+    @Override
     public double getBaseSalary() {
         double baseSalary = set * BASE_HOURS_SET * HOURLY_WAGE_PER_TEACHER;
         return baseSalary;
     }
 
+    @Override
     public double getSalaryPerMonth() {
         double salaryPerMonths = getBaseSalary() * 4 + FOR_TC_PER_WEEK * 4;
         return salaryPerMonths;
@@ -37,11 +39,13 @@ public class Teacher extends BaseEmployee{
 
     @Override
     public double getSalary() {
-        return getSalaryPerMonth() - getTaxes();
+        return getSalaryPerMonth() - getTaxesPerMonths();
     }
 
     @Override
-    public double getTaxes() {
+    public double getTaxesPerMonths() {
+        System.out.println("Taxes: $");
         return getSalaryPerMonth() * 30 / 100;
-    }
+    };
+
 }

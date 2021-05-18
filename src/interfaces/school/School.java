@@ -1,6 +1,6 @@
 package interfaces.school;
 
-import static interfaces.school.Data.FOR_TC_PER_WEEK;
+import static interfaces.school.ISalary.FOR_TC_PER_WEEK;
 import static interfaces.school.tests.Assert.*;
 
 public class School {
@@ -18,20 +18,23 @@ public class School {
         Parent parent2 = new Parent("Andy", "Kohut", 'M', 36, "Parent", 12345678911L, student1);
         Parent parent3 = new Parent("Tania", "lev", 'F', 42, "Parent", 12345675555L, student2);
 
-        Teacher teacher1 = new Teacher("Maria Ivanivna", "Ivankiv", 'F', 35, "Teacher", "Literature", 2, FOR_TC_PER_WEEK);
+        Teacher teacher1 = new Teacher("Maria Ivanivna", "Ivankiv", 'F', 35, "Teacher",
+                "Literature", 2, FOR_TC_PER_WEEK);
+
+        ISalary salaryForTeacher1    = teacher1;
+        ISalary salaryForTeacher2 = new Teacher("Ivan Petrovuch", "Petrushun", 'M', 55,"Teacher",
+                "Math",1, FOR_TC_PER_WEEK);
 
         Parent[] parents = new Parent [] {parent1, parent2};
 
-//        parent1.printParent();
-//        parent2.printParent();
-//        parent3.printParent();
-//
-//        System.out.println(LINE);
-//
-//        student1.printParent(parents);
-//        System.out.println(LINE);
-//        teacher1.printTeacher();
         aAssert(EXPECTED_BASE_SALARY, teacher1.getBaseSalary());
         aAssert(EXPECTED_PAY_CHECK, teacher1.getSalary());
+
+
+        System.out.println(salaryForTeacher1.getTaxesPerMonths());
+        System.out.println(teacher1.getTaxesPerMonths());
+
+        double a = 30 / 100;
+        System.out.println(a);
     }
 }

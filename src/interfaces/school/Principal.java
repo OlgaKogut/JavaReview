@@ -11,7 +11,17 @@ public final class Principal extends BaseAdministrator {
     }
 
     @Override
-    public double getTaxes() {
+    public double getTaxesPerMonths() {
+        return 0;
+    }
+
+    @Override
+    public double getBaseSalary() {
+        return 0;
+    }
+
+    @Override
+    public double getSalaryPerMonth() {
         return 0;
     }
 }
